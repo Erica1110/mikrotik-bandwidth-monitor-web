@@ -7,43 +7,58 @@ Este repositório contém o código-fonte de uma Interface Web de Monitoramento 
 ## 📁 Estrutura de Pastas e Arquivos 
 
 ```
-├── mikrotik-monitor-web/
-│   ├── app.py                      # 1. Backend: Servidor Flask/Socket.IO
-│   ├── config.py                   # 2. Backend: Configurações do Mikrotik
-│   ├── requirements.txt            # 3. Backend: Lista de dependências Python
-│   ├── static/                     # 4. Frontend: Arquivos estáticos (CSS, JS)
-│   │   ├── css/
-│   │   │   └── style.css           # Estilização da interface
-│   │   └── js/
-│   │       └── script.js           # 5. Frontend: Lógica do WebSocket e Gráfico Chart.js
-│   └── templates/                  # 6. Frontend: Templates HTML
-│       └── index.html              # Interface principal com o gráfico
-└── README.md                       # 7. Documentação: Instruções de instalação e uso
+mikrotik-bandwidth-monitor-web/
+├── app.py                      # Servidor Flask principal
+├── config.py                   # Configurações e variáveis de ambiente
+├── requirements.txt            # Dependências Python
+├── .env                        # Variáveis de ambiente (CREDENCIAIS)
+├── static/                     # Arquivos estáticos
+│   ├── css/
+│   │   └── style.css           # Estilos da interface
+│   └── js/
+│       └── script.js           # Lógica frontend e gráficos
+├── templates/                  # Templates HTML
+│   └── index.html              # Interface principal
+└── README.md                   # Documentação
 ```
 
 ## 💻 Tecnologias Utilizadas
 
 ### 🌐 Frontend & Visualização
 
-- HTML5 / CSS3: Estrutura base da interface.
-- JavaScript (ES6+): Lógica do lado do cliente para o tratamento de dados e gráficos.
-- Chart.js: Biblioteca JavaScript leve e flexível, usada para a renderização do gráfico de linha dinâmico do bandwidth (Rx/Tx).
-- Bootstrap (Opcional): Framework CSS para estilização rápida e layout responsivo, baseado no wireframe sugerido.
+- HTML5/CSS3: Estrutura e estilização
+- JavaScript (ES6+): Lógica do cliente
+- Chart.js: Gráficos dinâmicos em tempo real
+- CSS Responsivo: Adaptação para diferentes telas
 
 ### ⚙️ Backend & Tempo Real
 
-- Python: Linguagem principal do servidor.
-- Flask: Micro-framework Python utilizado para o roteamento web e hospedagem da aplicação.
-- Flask-SocketIO: Extensão crucial para o Flask, que permite a comunicação bidirecional e de tempo real (WebSockets) entre o servidor e o navegador.
-- python-routeros (ou similar): Biblioteca Python para estabelecer a conexão, autenticação e comunicação via Mikrotik RouterOS API.
-- Eventlet (ou gevent): Biblioteca de rede assíncrona utilizada pelo Socket.IO para lidar eficientemente com múltiplas conexões concorrentes.
+- Python 3.13: Linguagem principal
+- Flask: Framework web
+- RouterOS API: Comunicação com Mikrotik
+- HTTP Polling: Comunicação em tempo real (alternativa a WebSockets)
 
 ### Dependências
 
 Antes de rodar baixe:
-```
-pip install -r requirements.txt
-```
+- Python 3.8+
+- Roteador Mikrotik com API habilitada
+- Acesso às credenciais do Mikrotik
+
+Instalação das dependências:
+  pip install -r requirements.txt
+
+
+### Configuração das Credenciais
+- Edite o arquivo .env:
+
+-- Configurações de Segurança
+FLASK_SECRET_KEY="sua_chave_secreta_aqui"
+--Credenciais Mikrotik
+MIKROTIK_HOST="seu_host"
+MIKROTIK_USER="seu_usuario"
+MIKROTIK_PASSWORD="sua_senha"
+INTERFACE_TO_MONITOR="sua_interface"
 
 ### 🔬 Teste de Funcionamento e Comprovação
 
