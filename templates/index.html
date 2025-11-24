@@ -7,15 +7,17 @@
     
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     
+    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
     
+    <!-- Socket.IO -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.min.js"></script>
 </head>
 <body>
 
     <div class="container">
         <h1>📊 Monitoramento de Bandwidth do Mikrotik</h1>
-        <p class="status-info">Monitorando interface: <span id="interface-name">Loading...</span></p>
+        <p class="status-info">Monitorando interface: <span id="interface-name">Carregando...</span></p>
         
         <div class="chart-container">
             <canvas id="trafficChart"></canvas>
